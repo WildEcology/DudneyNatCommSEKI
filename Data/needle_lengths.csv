@@ -1,0 +1,312 @@
+treeid,year,length,site,drought,name
+DC4,2017,8.833333333333334,DC,No drought,sugar pine
+DC4,2016,7.3,DC,No drought,sugar pine
+DC4,2015,7.833333333333333,DC,Drought,sugar pine
+DC4,2014,7.3999999999999995,DC,Drought,sugar pine
+DC4,2013,7.333333333333333,DC,Drought,sugar pine
+DC4,2012,7.833333333333333,DC,Drought,sugar pine
+DC5,2017,11.133333333333333,DC,No drought,sugar pine
+DC5,2016,11.066666666666668,DC,No drought,sugar pine
+DC5,2015,10.333333333333334,DC,Drought,sugar pine
+DC5,2014,10,DC,Drought,sugar pine
+DC5,2013,10.733333333333334,DC,Drought,sugar pine
+DC5,2012,10.366666666666667,DC,Drought,sugar pine
+DC6,2017,8.866666666666667,DC,No drought,sugar pine
+DC6,2016,7.866666666666667,DC,No drought,sugar pine
+DC6,2015,6,DC,Drought,sugar pine
+DC6,2014,5.733333333333334,DC,Drought,sugar pine
+DC6,2013,6.466666666666666,DC,Drought,sugar pine
+DC6,2012,6.900000000000001,DC,Drought,sugar pine
+DC7,2017,6.6000000000000005,DC,No drought,sugar pine
+DC7,2016,7.6000000000000005,DC,No drought,sugar pine
+DC7,2015,5.966666666666666,DC,Drought,sugar pine
+DC7,2014,5.933333333333334,DC,Drought,sugar pine
+DC7,2013,5.3999999999999995,DC,Drought,sugar pine
+DC7,2012,6.366666666666667,DC,Drought,sugar pine
+DC13,2017,6.6000000000000005,DC,No drought,sugar pine
+DC13,2016,6.766666666666667,DC,No drought,sugar pine
+DC13,2015,5.666666666666667,DC,Drought,sugar pine
+DC13,2014,5.6000000000000005,DC,Drought,sugar pine
+DC13,2013,6.133333333333333,DC,Drought,sugar pine
+DC13,2012,NA,DC,Drought,sugar pine
+DC16,2017,6.066666666666666,DC,No drought,sugar pine
+DC16,2016,6.066666666666667,DC,No drought,sugar pine
+DC16,2015,5.8999999999999995,DC,Drought,sugar pine
+DC16,2014,5.166666666666667,DC,Drought,sugar pine
+DC16,2013,4.866666666666666,DC,Drought,sugar pine
+DC16,2012,5.133333333333333,DC,Drought,sugar pine
+DC17,2017,7.400000000000001,DC,No drought,sugar pine
+DC17,2016,7.866666666666667,DC,No drought,sugar pine
+DC17,2015,7.033333333333334,DC,Drought,sugar pine
+DC17,2014,6.166666666666667,DC,Drought,sugar pine
+DC17,2013,6.5,DC,Drought,sugar pine
+DC17,2012,6.866666666666667,DC,Drought,sugar pine
+SB1,2017,7.8356666666666674,SB,No drought,sugar pine
+SB1,2016,7.634,SB,No drought,sugar pine
+SB1,2015,7.3103333333333325,SB,Drought,sugar pine
+SB1,2014,7.475666666666666,SB,Drought,sugar pine
+SB1,2013,8.560333333333334,SB,Drought,sugar pine
+SB1,2012,8.927999999999999,SB,Drought,sugar pine
+SB4,2017,7.069,SB,No drought,sugar pine
+SB4,2016,6.779,SB,No drought,sugar pine
+SB4,2015,5.756333333333333,SB,Drought,sugar pine
+SB4,2014,6.766333333333333,SB,Drought,sugar pine
+SB4,2013,8.147,SB,Drought,sugar pine
+SB4,2012,7.961666666666666,SB,Drought,sugar pine
+SB6,2017,7.945,SB,No drought,sugar pine
+SB6,2016,8.716,SB,No drought,sugar pine
+SB6,2015,8.067333333333332,SB,Drought,sugar pine
+SB6,2014,8.987666666666668,SB,Drought,sugar pine
+SB6,2013,8.706999999999999,SB,Drought,sugar pine
+SB6,2012,8.651666666666667,SB,Drought,sugar pine
+SB8,2017,10.098,SB,No drought,sugar pine
+SB8,2016,9.063666666666668,SB,No drought,sugar pine
+SB8,2015,7.484000000000001,SB,Drought,sugar pine
+SB8,2014,7.681333333333334,SB,Drought,sugar pine
+SB8,2013,9.095666666666666,SB,Drought,sugar pine
+SB8,2012,10.926333333333334,SB,Drought,sugar pine
+SB10,2017,6.602666666666667,SB,No drought,sugar pine
+SB10,2016,6.818666666666666,SB,No drought,sugar pine
+SB10,2015,6.630333333333333,SB,Drought,sugar pine
+SB10,2014,4.998333333333334,SB,Drought,sugar pine
+SB10,2013,7.215333333333334,SB,Drought,sugar pine
+SB10,2012,7.189,SB,Drought,sugar pine
+SB12,2017,8.745666666666667,SB,No drought,sugar pine
+SB12,2016,8.748666666666667,SB,No drought,sugar pine
+SB12,2015,9.127333333333334,SB,Drought,sugar pine
+SB12,2014,8.270333333333333,SB,Drought,sugar pine
+SB12,2013,8.810333333333334,SB,Drought,sugar pine
+SB12,2012,9.436,SB,Drought,sugar pine
+SB15,2017,6.037,SB,No drought,sugar pine
+SB15,2016,7.165666666666667,SB,No drought,sugar pine
+SB15,2015,7.447666666666666,SB,Drought,sugar pine
+SB15,2014,8.131,SB,Drought,sugar pine
+SB15,2013,7.492,SB,Drought,sugar pine
+SB15,2012,7.887499999999999,SB,Drought,sugar pine
+SB16,2017,7.297666666666667,SB,No drought,sugar pine
+SB16,2016,7.989999999999999,SB,No drought,sugar pine
+SB16,2015,7.869666666666668,SB,Drought,sugar pine
+SB16,2014,7.63,SB,Drought,sugar pine
+SB16,2013,7.458333333333333,SB,Drought,sugar pine
+SB16,2012,9.231,SB,Drought,sugar pine
+SB19,2017,8.504666666666667,SB,No drought,sugar pine
+SB19,2016,9.346,SB,No drought,sugar pine
+SB19,2015,8.778333333333334,SB,Drought,sugar pine
+SB19,2014,8.464333333333334,SB,Drought,sugar pine
+SB19,2013,8.289333333333333,SB,Drought,sugar pine
+SB19,2012,8.630666666666666,SB,Drought,sugar pine
+SB21,2017,8.892000000000001,SB,No drought,sugar pine
+SB21,2016,9.025333333333334,SB,No drought,sugar pine
+SB21,2015,7.585333333333334,SB,Drought,sugar pine
+SB21,2014,7.316,SB,Drought,sugar pine
+SB21,2013,9.409333333333334,SB,Drought,sugar pine
+SB21,2012,9.954666666666666,SB,Drought,sugar pine
+SB23,2017,6.617,SB,No drought,sugar pine
+SB23,2016,6.072333333333333,SB,No drought,sugar pine
+SB23,2015,7.957333333333334,SB,Drought,sugar pine
+SB23,2014,6.825666666666667,SB,Drought,sugar pine
+SB23,2013,6.900666666666666,SB,Drought,sugar pine
+SB23,2012,7.979333333333333,SB,Drought,sugar pine
+1,2012,NA,RC,  Drought,whitebark
+1,2013,4.5,RC,  Drought,whitebark
+1,2014,4.2,RC,  Drought,whitebark
+1,2015,4.6,RC,  Drought,whitebark
+1,2016,4.5,RC,No drought,whitebark
+1,2017,4.4,RC,No drought,whitebark
+2,2012,NA,RC,  Drought,whitebark
+2,2013,NA,RC,  Drought,whitebark
+2,2014,5.6,RC,  Drought,whitebark
+2,2015,5.5,RC,  Drought,whitebark
+2,2016,5.7,RC,No drought,whitebark
+2,2017,3.7,RC,No drought,whitebark
+3,2011,4.9,RC,No drought,whitebark
+3,2012,4.5,RC,  Drought,whitebark
+3,2013,5.4,RC,  Drought,whitebark
+3,2014,5.6,RC,  Drought,whitebark
+3,2015,5.2,RC,  Drought,whitebark
+3,2016,5.5,RC,No drought,whitebark
+3,2017,4.9,RC,No drought,whitebark
+4,2011,4.2,RC,No drought,whitebark
+4,2012,4.9,RC,  Drought,whitebark
+4,2013,5.5,RC,  Drought,whitebark
+4,2014,5.4,RC,  Drought,whitebark
+4,2015,4.9,RC,  Drought,whitebark
+4,2016,5.1,RC,No drought,whitebark
+4,2017,4.1,RC,No drought,whitebark
+5,2011,5.1,RC,No drought,whitebark
+5,2012,4.4,RC,  Drought,whitebark
+5,2013,5.1,RC,  Drought,whitebark
+5,2014,5.6,RC,  Drought,whitebark
+5,2015,5.6,RC,  Drought,whitebark
+5,2016,5.2,RC,No drought,whitebark
+5,2017,5.5,RC,No drought,whitebark
+6,2011,5.8,RC,No drought,whitebark
+6,2012,5.4,RC,  Drought,whitebark
+6,2013,5.6,RC,  Drought,whitebark
+6,2014,5.7,RC,  Drought,whitebark
+6,2015,5.6,RC,  Drought,whitebark
+6,2016,6.1,RC,No drought,whitebark
+6,2017,4.9,RC,No drought,whitebark
+7,2011,5.3,RC,No drought,whitebark
+7,2012,5.2,RC,  Drought,whitebark
+7,2013,5.7,RC,  Drought,whitebark
+7,2014,5.2,RC,  Drought,whitebark
+7,2015,5.1,RC,  Drought,whitebark
+7,2016,5.3,RC,No drought,whitebark
+7,2017,5.2,RC,No drought,whitebark
+8,2011,5.2,RC,No drought,whitebark
+8,2012,4.8,RC,  Drought,whitebark
+8,2013,5.3,RC,  Drought,whitebark
+8,2014,4.7,RC,  Drought,whitebark
+8,2015,5.7,RC,  Drought,whitebark
+8,2016,5.3,RC,No drought,whitebark
+8,2017,4.6,RC,No drought,whitebark
+9,2011,NA,RC,No drought,whitebark
+9,2012,5,RC,  Drought,whitebark
+9,2013,5.3,RC,  Drought,whitebark
+9,2014,5.9,RC,  Drought,whitebark
+9,2015,5.3,RC,  Drought,whitebark
+9,2016,5.2,RC,No drought,whitebark
+9,2017,3.1,RC,No drought,whitebark
+10,2011,5,GF,No drought,whitebark
+10,2012,5.4,GF,  Drought,whitebark
+10,2013,6.3,GF,  Drought,whitebark
+10,2014,6.4,GF,  Drought,whitebark
+10,2015,5.9,GF,  Drought,whitebark
+10,2016,6.2,GF,No drought,whitebark
+10,2017,5.5,GF,No drought,whitebark
+11,2011,4.7,GF,No drought,whitebark
+11,2012,4.6,GF,  Drought,whitebark
+11,2013,5,GF,  Drought,whitebark
+11,2014,5.2,GF,  Drought,whitebark
+11,2015,5.4,GF,  Drought,whitebark
+11,2016,5.1,GF,No drought,whitebark
+11,2017,4,GF,No drought,whitebark
+12,2011,4.8,GF,No drought,whitebark
+12,2012,4.4,GF,  Drought,whitebark
+12,2013,4.5,GF,  Drought,whitebark
+12,2014,4.8,GF,  Drought,whitebark
+12,2015,4.9,GF,  Drought,whitebark
+12,2016,4.4,GF,No drought,whitebark
+12,2017,3.5,GF,No drought,whitebark
+13,2011,3.9,GF,No drought,whitebark
+13,2012,3.8,GF,  Drought,whitebark
+13,2013,4.5,GF,  Drought,whitebark
+13,2014,4.3,GF,  Drought,whitebark
+13,2015,5,GF,  Drought,whitebark
+13,2016,3.9,GF,No drought,whitebark
+13,2017,3.9,GF,No drought,whitebark
+14,2011,4.1,GF,No drought,whitebark
+14,2012,3.8,GF,  Drought,whitebark
+14,2013,4.8,GF,  Drought,whitebark
+14,2014,4.6,GF,  Drought,whitebark
+14,2015,4.6,GF,  Drought,whitebark
+14,2016,4.3,GF,No drought,whitebark
+14,2017,4,GF,No drought,whitebark
+15,2011,NA,GF,No drought,whitebark
+15,2012,NA,GF,  Drought,whitebark
+15,2013,5.1,GF,  Drought,whitebark
+15,2014,5.2,GF,  Drought,whitebark
+15,2015,5.1,GF,  Drought,whitebark
+15,2016,4.9,GF,No drought,whitebark
+15,2017,3.3,GF,No drought,whitebark
+16,2013,NA,GF,  Drought,whitebark
+16,2014,NA,GF,  Drought,whitebark
+16,2015,4.7,GF,  Drought,whitebark
+16,2016,5.5,GF,No drought,whitebark
+16,2017,3.3,GF,No drought,whitebark
+17,2012,NA,GF,  Drought,whitebark
+17,2013,NA,GF,  Drought,whitebark
+17,2014,3.9,GF,  Drought,whitebark
+17,2015,4.5,GF,  Drought,whitebark
+17,2016,4.1,GF,No drought,whitebark
+17,2017,3.7,GF,No drought,whitebark
+18,2011,3.5,GF,No drought,whitebark
+18,2012,4.133333333,GF,  Drought,whitebark
+18,2013,5.333333333,GF,  Drought,whitebark
+18,2014,5.033333333,GF,  Drought,whitebark
+18,2015,5.066666667,GF,  Drought,whitebark
+18,2016,4.333333333,GF,No drought,whitebark
+19,2017,4,GF,No drought,whitebark
+19,2013,6.5,GF,  Drought,whitebark
+19,2014,5.5,GF,  Drought,whitebark
+19,2015,5.5,GF,  Drought,whitebark
+19,2016,5.5,GF,No drought,whitebark
+19,2017,4,GF,No drought,whitebark
+20,2011,2.9,Kearsarge,No drought,whitebark
+20,2012,3.233333333,Kearsarge,  Drought,whitebark
+20,2013,3.166666667,Kearsarge,  Drought,whitebark
+20,2014,3.533333333,Kearsarge,  Drought,whitebark
+20,2015,3.166666667,Kearsarge,  Drought,whitebark
+20,2016,3.666666667,Kearsarge,No drought,whitebark
+20,2017,3.033333333,Kearsarge,No drought,whitebark
+21,2011,2.566666667,Kearsarge,No drought,whitebark
+21,2012,3.133333333,Kearsarge,  Drought,whitebark
+21,2013,3.866666667,Kearsarge,  Drought,whitebark
+21,2014,3.933333333,Kearsarge,  Drought,whitebark
+21,2015,3.966666667,Kearsarge,  Drought,whitebark
+21,2016,3.233333333,Kearsarge,No drought,whitebark
+21,2017,3.433333333,Kearsarge,No drought,whitebark
+22,2011,3.266666667,Kearsarge,No drought,whitebark
+22,2012,3.966666667,Kearsarge,  Drought,whitebark
+22,2013,4.9,Kearsarge,  Drought,whitebark
+22,2014,4.833333333,Kearsarge,  Drought,whitebark
+22,2015,4.4,Kearsarge,  Drought,whitebark
+22,2016,4.5,Kearsarge,No drought,whitebark
+22,2017,3.033333333,Kearsarge,No drought,whitebark
+23,2011,3.7,Kearsarge,No drought,whitebark
+23,2012,4.066666667,Kearsarge,  Drought,whitebark
+23,2013,4.966666667,Kearsarge,  Drought,whitebark
+23,2014,5.366666667,Kearsarge,  Drought,whitebark
+23,2015,5,Kearsarge,  Drought,whitebark
+23,2016,4.066666667,Kearsarge,No drought,whitebark
+23,2017,4.333333333,Kearsarge,No drought,whitebark
+24,2011,3.666666667,Kearsarge,No drought,whitebark
+24,2012,3.3,Kearsarge,  Drought,whitebark
+24,2013,3.566666667,Kearsarge,  Drought,whitebark
+24,2014,4.066666667,Kearsarge,  Drought,whitebark
+24,2015,4.1,Kearsarge,  Drought,whitebark
+24,2016,4.2,Kearsarge,No drought,whitebark
+24,2017,2.933333333,Kearsarge,No drought,whitebark
+25,2011,4.233333333,Kearsarge,No drought,whitebark
+25,2012,3.666666667,Kearsarge,  Drought,whitebark
+25,2013,4.833333333,Kearsarge,  Drought,whitebark
+25,2014,4.3,Kearsarge,  Drought,whitebark
+25,2015,4.333333333,Kearsarge,  Drought,whitebark
+25,2016,3.733333333,Kearsarge,No drought,whitebark
+25,2017,3.5,Kearsarge,No drought,whitebark
+26,2011,3.333333333,Kearsarge,No drought,whitebark
+26,2012,3.3,Kearsarge,  Drought,whitebark
+26,2013,4.233333333,Kearsarge,  Drought,whitebark
+26,2014,4.066666667,Kearsarge,  Drought,whitebark
+26,2015,3.766666667,Kearsarge,  Drought,whitebark
+26,2016,4.366666667,Kearsarge,No drought,whitebark
+26,2017,2.9,Kearsarge,No drought,whitebark
+27,2011,4.933333333,Kearsarge,No drought,whitebark
+27,2012,5.233333333,Kearsarge,  Drought,whitebark
+27,2013,6.966666667,Kearsarge,  Drought,whitebark
+27,2014,6.233333333,Kearsarge,  Drought,whitebark
+27,2015,6,Kearsarge,  Drought,whitebark
+27,2016,5.533333333,Kearsarge,No drought,whitebark
+27,2017,4.433333333,Kearsarge,No drought,whitebark
+28,2011,3.866666667,Kearsarge,No drought,whitebark
+28,2012,4.366666667,Kearsarge,  Drought,whitebark
+28,2013,5.166666667,Kearsarge,  Drought,whitebark
+28,2014,5.066666667,Kearsarge,  Drought,whitebark
+28,2015,5.4,Kearsarge,  Drought,whitebark
+28,2016,5.433333333,Kearsarge,No drought,whitebark
+28,2017,3.833333333,Kearsarge,No drought,whitebark
+29,2011,4.1,Kearsarge,No drought,whitebark
+29,2012,3.8,Kearsarge,  Drought,whitebark
+29,2013,5.366666667,Kearsarge,  Drought,whitebark
+29,2014,5.066666667,Kearsarge,  Drought,whitebark
+29,2015,4.833333333,Kearsarge,  Drought,whitebark
+29,2016,4.766666667,Kearsarge,No drought,whitebark
+29,2017,3.6,Kearsarge,No drought,whitebark
+30,2011,4.7,Kearsarge,No drought,whitebark
+30,2012,4.066666667,Kearsarge,  Drought,whitebark
+30,2013,4.733333333,Kearsarge,  Drought,whitebark
+30,2014,4.866666667,Kearsarge,  Drought,whitebark
+30,2015,5.266666667,Kearsarge,  Drought,whitebark
+30,2016,4.4,Kearsarge,No drought,whitebark
+30,2017,4.266666667,Kearsarge,No drought,whitebark
