@@ -91,6 +91,7 @@ fe_mod = feols(perinc~ vpd+I(vpd^2)+I(vpd^3)+dbh+density | plot + year,
 
 summary(fe_mod)
 
+
 V_CR1 <- vcovCR(fe_mod, cluster = c(all_pan_dat$plot), type = "CR1")
 V_CR1=as.matrix(V_CR1)
 
@@ -231,3 +232,39 @@ rangedat=df_elev%>%
 rangedat
 
 
+
+##checking the response forms between cubic and quadratic model
+library(effects)
+library(gridExtra)
+source("Scripts/GLMMS_pathogen.R")
+
+newpan=all_pan_dat%>%
+  mutate(plot=factor(plot), year=factor(year))
+
+fe_mod1 = lm(perinc~ vpd+I(vpd^2)+I(vpd^3)+dbh+density + plot+year,
+               data = na.omit(newpan))
+
+summary(fe_mod1)
+AIC(fe_mod1, fe_mod_3)
+
+plot(effect("vpd", fe_mod1))
+
+feplot2=plot(effect("vpd", fe_mod1),axes=list(
+  y=list(lab="P(prevalence)",ticks=list(at=c(-0.8,-.1,-.05, 0,.05,.1, .6))),
+  x=list(vpd=list(lab="VPD (hPa)"))),main="FE panel model QUAD")
+
+feplot2
+
+fe_mod_3 = lm(perinc~ vpd+I(vpd^2)+dbh+density +plot+year,
+             data = na.omit(newpan))     
+summary(fe_mod_3)
+plot(effect("vpd", fe_mod_3))  
+
+
+feplot3=plot(effect("vpd", fe_mod_3),axes=list(
+  y=list(lab="P(prevalence)",ticks=list(at=c(-0.8,-.1,-.05, 0,.05,.1, .6))),
+  x=list(vpd=list(lab="VPD (hPa)"))),main="FE panel model CUBIC")
+
+feplot3
+grid.arrange(q95_plot,plot00,feplot2,plot95_3,plot00_3, feplot3, ncol=3)
+           

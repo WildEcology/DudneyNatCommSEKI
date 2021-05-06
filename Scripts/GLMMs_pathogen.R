@@ -27,6 +27,8 @@ library(ggthemes)
 library(optimx)
 library(MuMIn)
 library(patchwork)
+library(effects)
+library(gridExtra)
 
 select=dplyr::select
 rename=dplyr::rename
@@ -76,6 +78,13 @@ models=glmer(inc~vpd*time+I(vpd^2)*time+ribes+aspect+slope+
 
 summary(models)
 
+models3=glmer(inc~vpd*time+I(vpd^2)*time+I(vpd^3)*time+ribes+aspect+slope+
+               density*time+dbh*time+(1|plot)+(1|species),
+             control = glmerControl(optimizer = "optimx", calc.derivs = FALSE,
+                                    optCtrl = list(method = "nlminb", starttests = FALSE, kkt = FALSE)),
+             data = merge.dat, family=binomial)
+
+
 
 ##===================================================================================================
 ##                        GLMMs OF FIRST AND SECOND SURVEY BLISTER RUST INFECTIONS
@@ -94,6 +103,11 @@ mod95=glmer(inc~vpd+I(vpd^2)+density+ribes+dbh+slope+aspect+(1|plot)+(1|species)
 summary(mod95)
 r.squaredGLMM(mod95)
 
+q95_plot=plot(effect("vpd", mod95),axes=list(
+  y=list(lab="P(Infection)",ticks=list(at=c(-0.01,.001,.01,.02, .04))),
+  x=list(vpd=list(lab="VPD (hPa)"))),main="First survey GLMM QUAD")
+
+
 ##cubic model
 
 mod95_3=glmer(inc~vpd+I(vpd^2)+I(vpd^3)+density+ribes+dbh+slope+aspect+(1|plot)+(1|species),
@@ -103,6 +117,9 @@ mod95_3=glmer(inc~vpd+I(vpd^2)+I(vpd^3)+density+ribes+dbh+slope+aspect+(1|plot)+
 
 summary(mod95_3)
 
+plot95_3=plot(effect("vpd", mod95_3),axes=list(
+  y=list(lab="P(Infection)",ticks=list(at=c(-0.01,.001,.01,.02, .04))),
+  x=list(vpd=list(lab="VPD (hPa)"))),main="First survey GLMM CUBIC")
 
 ##SECOND SURVEY
 dat00=filter(merge.dat, time=="second")
@@ -118,6 +135,9 @@ mod00=glmer(inc~vpd+I(vpd^2)+density+ribes+dbh+slope+aspect+
 summary(mod00)
 r.squaredGLMM(mod00)
 
+plot00=plot(effect("vpd", mod00),axes=list(
+  y=list(lab="P(Infection)",ticks=list(at=c(-0.01,.001,.01,.02, .03))),
+  x=list(vpd=list(lab="VPD (hPa)"))),main="Second survey GLMM QUAD")
 
 ##cubic model
 mod00_3=glmer(inc~vpd+I(vpd^2)+I(vpd^3)+density+ribes+dbh+slope+aspect+
@@ -128,6 +148,16 @@ mod00_3=glmer(inc~vpd+I(vpd^2)+I(vpd^3)+density+ribes+dbh+slope+aspect+
 
 
 summary(mod00_3)
+
+plot00_3=plot(effect("vpd", mod00_3),axes=list(
+  y=list(lab="P(Infection)",ticks=list(at=c(-0.01,.001,.01,.02, .03))),
+  x=list(vpd=list(lab="VPD (hPa)"))),main="Second survey GLMM CUBIC")
+plot00_3
+
+
+
+grid.arrange(q95_plot,plot95_3,plot00,plot00_3, ncol=2)
+
 
 ##=============================================================================================
 ##                        FIGURES FOR FIRST AND SECOND SURVEY MODELS
@@ -242,6 +272,31 @@ era95_new=era95 %>%
 
 era95_new
 
+era95_new_cube=era95 %>%
+  ggplot(aes(x=vpd))+
+  geom_histogram(aes(y = stat((count / sum(count))*8)),
+                 color="#477571",fill="#477571", alpha=0.5,  binwidth = .2)+
+  stat_smooth(aes(x=vpd, y=inc), method = "glm", formula = y ~ x + I(x^2)+I(x^3),
+              method.args=list(family = "binomial"), fill= "#404080",color="#404080")+
+  scale_y_continuous("Prop. infected stems",
+                     sec.axis = sec_axis(~. *7031/8, name = "White pine stems (#)",
+                                         breaks = seq(0,600,100)), n.breaks = 3)+
+  ylab("Prop. infected & stem count")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  scale_x_continuous(name="VPD (hPa)", seq(6,18,2))+
+  ggtitle(label="First survey infections")+
+  theme(axis.line.y.right = element_line(color = "#477571"), 
+        axis.ticks.y.right = element_line(color = "#477571"),
+        axis.text.y.right = element_text(color = "#477571"), 
+        axis.title.y.right = element_text(color = "#477571"),
+        axis.line.y.left = element_line(color = "#404080"), 
+        axis.ticks.y.left = element_line(color = "#404080"),
+        axis.text.y.left = element_text(color = "#404080"), 
+        axis.title.y.left = element_text(color = "#404080"),
+        plot.title = element_text(hjust = 0.5))
+
+era95_new_cube
+
 ##===========================
 ##SECOND SURVEY FIGURE
 ##===========================
@@ -271,7 +326,33 @@ era00_new=era00 %>%
 
 era00_new
 
+era00_new_cube=era00 %>%
+  ggplot(aes(x=vpd))+
+  geom_histogram(aes(y = stat((count / sum(count))*5)),
+                 color="#477571",fill="#477571", alpha=0.5,  binwidth = .2)+
+  stat_smooth(aes(x=vpd, y=inc), method = "glm", formula = y ~ x + I(x^2)+I(x^3),
+              method.args=list(family = "binomial"), fill= "#d85555",color="#d85555")+
+  scale_y_continuous("Prop. infected stems",
+                     sec.axis = sec_axis(~. *5458/5, name = "White pine stems (#)",
+                                         breaks = seq(0,600,100)), n.breaks = 6) +
+  ylab("Prop. infected & stem count")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  scale_x_continuous(name="VPD (hPa)", seq(6,18,2))+
+  ggtitle(label="Second survey infections")+
+  theme(axis.line.y.right = element_line(color = "#477571"), 
+        axis.ticks.y.right = element_line(color = "#477571"),
+        axis.text.y.right = element_text(color = "#477571"), 
+        axis.title.y.right = element_text(color = "#477571"),
+        axis.line.y.left = element_line(color = "#d85555"), 
+        axis.ticks.y.left = element_line(color = "#d85555"),
+        axis.text.y.left = element_text(color = "#d85555"), 
+        axis.title.y.left = element_text(color = "#d85555"),
+        plot.title = element_text(hjust = 0.5))
+
+
+
 era95_new+era00_new
+
 
 ##for diff_raw/fe_fig calling script FE_panelmodel.R
 source("Scripts/FE_panelmodel.R")

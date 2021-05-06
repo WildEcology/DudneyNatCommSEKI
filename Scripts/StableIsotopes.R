@@ -125,7 +125,7 @@ isofign=ggplot(isodat, aes(x=Rust, y=n, fill=Rust, color=Rust))+
 isofign
 
 
-pernfig=ggplot(percdat, aes(x=Rust, y=pern, fill=Rust, color=Rust))+
+pernfig=ggplot(isodat, aes(x=Rust, y=pern, fill=Rust, color=Rust))+
   geom_boxplot(width=0.5,position=position_dodge(1), alpha=.5)+
   geom_jitter(position=position_jitter(0.2),alpha=.1,aes(color=Rust))+
   scale_color_manual(values=c("#477571","#EAB948"))+
@@ -166,15 +166,21 @@ numfig=ggplot(isodat, aes(x=Rust, y=mean_num, fill=Rust, color=Rust))+
            alpha=1,color="black", size=2.5)
 
 numfig
-
+help("scale_color_manual")
 isofigyearsc=ggplot(isodat, aes(x=year, y=delta_c, color=Rust, fill=Rust))+
   geom_smooth(alpha=.3)+
   geom_jitter(width = .2, alpha=.2)+
-  scale_color_manual(values=c("#477571","#EAB948"))+
-  scale_fill_manual(values=c("#477571","#EAB948"))+
+  scale_color_manual(values=c("#477571","#EAB948"),
+                     labels = c("No", "Yes"),
+                     limits = c("No", "Yes"),
+                     name="Blister rust") +
+  scale_fill_manual(values=c("#477571","#EAB948"),
+                    labels = c("No", "Yes"),
+                    limits = c("No", "Yes"),
+                    name="Blister rust")+
   labs(y="Needle *&delta;*<sup>13</sup>C (&permil;)",
        x="Year")+
-  guides(fill=F, color=guide_legend(title="Blister rust"))+
+  #guides(fill=F)+
   scale_x_continuous(name="Year", seq(2012,2017,1))+
   annotate("text", y=-25,x=2016, label="F = 11.28, P = 0.001",
       alpha=1,color="black", size=3)+
