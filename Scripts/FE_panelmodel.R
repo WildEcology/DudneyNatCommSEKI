@@ -161,3 +161,24 @@ diff_raw=comb_raw %>%
         legend.text = element_text(size=10),plot.title = element_text(hjust = 0.5))
 
 diff_raw
+
+
+##===================================================================================================
+##                      FE PANEL MODEL WITH TEMPERATURE INSTEAD OF VPD
+##===================================================================================================
+
+tempdata=read_csv("Data/temp_data.csv")
+
+temp_clean=tempdata%>%
+  mutate(year=ifelse(time=="second", 2016, 1995))%>%
+  group_by(plot, year)%>%
+  distinct(tmax)%>%
+  mutate(year=factor(year), plot=factor(plot))%>%
+  right_join(all_pan_dat)
+
+
+fe_mod_temp = feols(perinc~ tmax+I(tmax^2)+dbh+density | plot + year,
+               data = na.omit(temp_clean))
+summary(fe_mod_temp)
+
+

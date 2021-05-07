@@ -375,7 +375,7 @@ allfigs+plot_annotation(tag_levels="a") & theme(plot.tag.position = c(.05, 1),
 
 
 ##reading in temperature data
-tempdata=read_csv("Data/temp.data.csv")
+tempdata=read_csv("Data/climate_data.csv")
 
 #first and second survey
 temp95=filter(tempdata, time=="first")
@@ -408,6 +408,17 @@ mod00temps=glmer(inc~tmax+I(tmax^2)+density+ribes+dbh+slope+aspect+
 
 summary(mod00temps)
 r.squaredGLMM(mod00temps)
+
+tab_model(mod95temps, mod00temps,
+           transform = NULL,show.aic = T,  show.re.var = F, show.est=T, 
+           show.se=T,auto.label = F, show.ci = F,show.r2 = F,
+           dv.labels = c("First survey model", "Second survey model"),
+           #string.pred = "Coeffcient",
+           string.est = "Coefficient",
+           string.se  = "Std. Error",
+           string.p = "P-Value",
+           pred.labels = c("Intercept", "Temperature", "Temperature^2",
+                           "Density", "Ribes", "DBH", "Slope", "Aspect"))
 
 
 
@@ -487,4 +498,105 @@ era95_tempsfig/era00_tempsfig +
   plot_annotation(tag_levels = 'a') & theme(plot.tag.position = c(0, .90),
     plot.tag = element_text(face = 'bold', size=12, family ="Helvetica", 
           hjust = -1, vjust = -1),text=element_text(family ="Helvetica"))
+
+
+
+
+##=================================================================================================================
+##                      
+##                              CODE FOR SUPPLEMENTARY TABLE 1 
+##                    This code compares models using different climate variables
+## ==================================================================================================================
+
+
+tempdata=read_csv("Data/climate_data.csv")
+
+dat95=filter(merge.dat, time=="first")
+
+surv_dat95=dat95%>%
+  left_join(tempdata)
+
+
+vpdmod=glmer(inc ~ vpd+I(vpd^2)+ribes+ dbh+
+                density+slope+aspect+(1|plot)+(1|species),
+              control = glmerControl(optimizer = "optimx", calc.derivs = FALSE,
+                                     optCtrl = list(method = "nlminb", starttests = FALSE, kkt = FALSE)),
+              family = binomial,data = surv_dat95)
+
+vpdmonth=glmer(inc ~ vpdmonth+I(vpdmonth^2)+ribes+ dbh+
+                 density+slope+aspect+(1|plot)+(1|species),
+               control = glmerControl(optimizer = "optimx", calc.derivs = FALSE,
+                                      optCtrl = list(method = "nlminb", starttests = FALSE, kkt = FALSE)),
+               family = binomial,data = surv_dat95)
+
+tminmod=glmer(inc ~ tmin+I(tmin^2)+ribes+ dbh+
+                density+slope+aspect+(1|plot)+(1|species),
+              control = glmerControl(optimizer = "optimx", calc.derivs = FALSE,
+                                     optCtrl = list(method = "nlminb", starttests = FALSE, kkt = FALSE)),
+              family = binomial,data = surv_dat95)
+
+tmaxmod=glmer(inc ~ tmax+I(tmax^2)+ribes+ dbh+
+                density+slope+aspect+(1|plot)+(1|species),
+              control = glmerControl(optimizer = "optimx", calc.derivs = FALSE,
+                                     optCtrl = list(method = "nlminb", starttests = FALSE, kkt = FALSE)),
+              family = binomial,data = surv_dat95)
+
+
+
+dewmod=glmer(inc ~ dew+I(dew^2)+ribes+ dbh+
+               density+slope+aspect+(1|plot)+(1|species),
+             control = glmerControl(optimizer = "optimx", calc.derivs = FALSE,
+                                    optCtrl = list(method = "nlminb", starttests = FALSE, kkt = FALSE)),
+             family = binomial,data = surv_dat95)
+
+precipmod=glmer(inc ~ precip+I(precip^2)+ribes+ dbh+
+                  density+slope+aspect+(1|plot)+(1|species),
+                control = glmerControl(optimizer = "optimx", calc.derivs = FALSE,
+                                       optCtrl = list(method = "nlminb", starttests = FALSE, kkt = FALSE)),
+                family = binomial,data = surv_dat95)
+
+noclim=glmer(inc ~ ribes+ dbh+
+               density+slope+aspect+(1|plot)+(1|species),
+             control = glmerControl(optimizer = "optimx", calc.derivs = FALSE,
+                                    optCtrl = list(method = "nlminb", starttests = FALSE, kkt = FALSE)),
+             family = binomial,data = surv_dat95)
+
+
+##=================================================================================================================
+##                      
+##                              CODE FOR SUPPLEMENTARY TABLE 10 
+##                    This model includes dead trees from second survey
+##          to draw a comparison between models that include both dead and live trees
+## ==================================================================================================================
+
+era00_dead=pathogen_dat%>%
+  filter(era95_inc_tot!=1)%>%
+  select(inc_tot, vpd00, tree_id, species, plot, ribes, slope, south, density00, dbh, domsp)%>%
+  set_colnames(c("inc", "vpd", "tree_id", "species", "plot", "ribes", 
+                 "slope", "aspect", "density","dbh", "domsp"))%>%
+  mutate(time="second")
+
+
+merge.dat_dead=era00_dead%>%
+  full_join(era95)%>%
+  mutate(ribes=as.numeric(ribes))%>%
+  mutate_at(scale, .vars = vars(-plot, -species,-inc, 
+                                -tree_id, -ribes,-time, -domsp))%>%
+  as.data.frame(.)
+
+
+##dead tree data
+dat00_dead=filter(merge.dat_dead, time=="second")
+
+
+##quadratic model
+mod00_dead=glmer(inc~vpd+I(vpd^2)+density+ribes+dbh+slope+aspect+
+              (1|plot)+(1|species),
+            control = glmerControl(optimizer = "optimx", calc.derivs = FALSE,
+                                   optCtrl = list(method = "nlminb", starttests = FALSE, kkt = FALSE)),
+            data = dat00_dead, family=binomial)
+
+summary(mod00_dead)
+r.squaredGLMM(mod00_dead)
+
 
