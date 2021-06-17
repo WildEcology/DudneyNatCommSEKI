@@ -219,4 +219,5 @@ newfig=ggplot(mortdatpre, aes(elevation, predicted, fill=newname, color=newname)
 
 newfig
 
-#ggsave("newfig5.mortribes.png", newfig,width=4, height=8, bg = "transparent")
+#ggsave("newfig5.mortribes.pdf", newfig,width=4, height=8, bg = "transparent")
+

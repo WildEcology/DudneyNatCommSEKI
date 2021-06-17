@@ -129,7 +129,7 @@ justinc
 ##FIG 4 PREDICTED PREVALENCE PANEL C
 #====================================================================================================
 
-mcdat=read_csv("Data/mcsim_elevation.csv")
+mcdat=read_csv("Data_large/mcsim_elevation.csv")
 
 ##random sample figure
 data_samp=data.frame(mcdat[sample(nrow(mcdat), 1000), ])
@@ -170,7 +170,7 @@ sample_elev_plot
 
 ##MC simulated data
 
-df_ranges=read_csv("Data/p.point_elev_MCdat.csv")
+df_ranges=read_csv("Data_large/p.point_elev_MCdat.csv")
 
 head(df_ranges)
 
@@ -207,7 +207,34 @@ elevationfig=ggplot(newranges, aes(elev_third, y=allmeans*100, fill=name))+
 elevationfig
 
 
-##COMBININ FIGURES
+elevationfig=ggplot(df_ranges, aes(elev_third, y=mean*100, fill=factor(name)))+
+  geom_hline(yintercept = 0, linetype="dashed", color="grey")+
+  geom_point(position=position_jitterdodge(),alpha=0.01, aes(color=factor(name))) +
+  geom_boxplot(alpha=.8, color="#2d2960", outlier.shape = NA)+
+  scale_fill_manual(values=c("#d85555","#ff9538"),
+                    limits=c( "diff00", "diff60"),
+                    labels=c( "Climate change 2016", "RCP4.5 2056-60"),
+                    name="")+
+  scale_color_manual(values=c("#d85555","#ff9538"),
+                    limits=c( "diff00", "diff60"),
+                    labels=c( "Climate change 2016", "RCP4.5 2056-60"),
+                    name="")+
+  ggtitle("Predicted differences")+
+  xlab("Elevation terciles (m)")+
+  ylim(-38,15)+
+  ylab("Δ P(prop. infected) (p.p.)")+
+  scale_x_discrete(limits =c("Low (1387-2655)" ="Low (1387-2655)" , 
+                             "Mid (2656-3132)" ="Mid (2656-3132)" ,
+                             "High (3133-3486)"="High (3133-3486)"),
+                   labels=c("Low", "Mid", "High"))+
+  theme(legend.position = c(.70,.2), legend.text=element_text(size=12),
+        legend.background=element_blank(),
+        axis.text.x = element_text(size=17))
+
+elevationfig
+
+
+##COMBINING FIGURES
 
 figs4=(vpdfig/justinc)|(sample_elev_plot/elevationfig)
 
@@ -216,7 +243,7 @@ figs4+
             plot.tag = element_text(face = 'bold', size=23, family ="Helvetica", 
                 hjust = 0, vjust = -1),text=element_text(family ="Helvetica"))
 
-
+#export 10x12
 
 #====================================================================================================
 ##FIG 6 PANEL E
@@ -248,6 +275,6 @@ justincpivot=combdat %>%
 
 justincpivot
 
-#ggsave("incidence_fig5_nopoint.png", justincpivot,width=3, height=8, bg = "transparent")
+#ggsave("incidence_fig6_nopoint.pdf", justincpivot,width=3, height=8, bg = "transparent")
 
 

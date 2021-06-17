@@ -24,7 +24,7 @@
 
 library(tidyverse)
 require(foreign)
-require(nnet)
+library(nnet)
 library(ggeffects)
 library(magrittr)
 library(margins)

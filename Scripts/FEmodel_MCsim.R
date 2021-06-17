@@ -352,3 +352,74 @@ ranges=df_range%>%
   summarize(mean_min=mean(minelev),
             mean_max=mean(maxelev))
 ranges
+
+
+##=================================================================================================================
+##       ##ESTIMATED ELEVATION SHIFT               
+##==================================================================================================================
+dat=select(panel00,plot)
+df_rangeshift=data.frame()
+
+for (i in 1:10000){
+  
+  ##first, randomly sample different future climate change scenarios
+  file=as.character(filenames[sample(nrow(filenames), 1), ])
+  
+  ##making dataframe
+  futvpd=macadiff%>%
+    filter(idshort==file)%>%
+    mutate(plot=factor(plot))
+  
+  fut_dat <- panel00 %>%##Future vpd
+    left_join(futvpd)%>%
+    mutate(vpdnew=vpd*vpdchange)%>%
+    select(-vpd, -idshort, -vpdchange)%>%
+    rename(vpd = vpdnew)
+  
+  ##now run the monte carlo simulation
+  
+  d = draw[i,]
+  modified_fe_mod = fe_mod
+  modified_fe_mod$coefficients = d
+  dat$vals_00 = predict(modified_fe_mod, newdata = panel00)
+  dat$vals_95 = predict(modified_fe_mod, newdata = dat95)
+  dat$vals_fut=predict(modified_fe_mod, newdata=fut_dat)
+  
+  dat_range=dat%>%
+    left_join(elevation)%>%
+    pivot_longer(-c(plot, elevation))%>%
+    filter(value>0.02)%>%
+    group_by(name)%>%
+    summarize(minelev=min(elevation), maxelev=max(elevation))%>%
+    ungroup()%>%
+    pivot_wider(names_from=name, values_from=c(minelev, maxelev))%>%
+    mutate(diff00max=maxelev_vals_00-maxelev_vals_95,
+           diff_futmax=maxelev_vals_fut-maxelev_vals_95,
+           diff00min=minelev_vals_00-minelev_vals_95,
+           diff_futmin=minelev_vals_fut-minelev_vals_95) %>% 
+    select(diff00min,diff00max,diff_futmin,diff_futmax)
+  
+  tot=data.frame(dat_range)
+  df_rangeshift=rbind(df_rangeshift, tot)
+}
+
+#write_csv(df_rangeshift, "Data_large/rangeshift_linear.csv")
+
+linearR <- df_rangeshift %>% 
+  ungroup() %>% 
+  summarize(mdiffmax16=mean(diff00max),
+            q25max16=quantile(diff00max, .025),
+            q95max16=quantile(diff00max, .975),
+            
+            diffmin16=mean(diff00min),
+            q25min16=quantile(diff00min, .025),
+            q95min16=quantile(diff00min, .975),
+            
+            mdiffmaxfut=mean(diff_futmax),
+            q25maxfut=quantile(diff_futmax, .025),
+            q95maxfut=quantile(diff_futmax, .975),
+            
+            diffminfut=mean(diff_futmin),
+            q25minfut=quantile(diff_futmin, .025),
+            q95minfut=quantile(diff_futmin, .975))
+

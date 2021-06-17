@@ -43,11 +43,26 @@ meanppt=data.frame(mean=mean(climdat$ppt))
 meanvpd=data.frame(mean=mean(climdat$meanvpd)) 
 
 
+
 ## Temperature figure
 tempsdat=climdat%>%
   select(year, meantmin, meantmax)%>%
   pivot_longer(-year)
 
+##climate change estimations
+before=climdat %>% 
+  filter(year<1996) %>% 
+  pivot_longer(-year) %>%
+  group_by(name) %>% 
+  summarise(means=mean(value),sds=sd(value))
+
+after=climdat %>% 
+  filter(year>1995) %>% 
+  pivot_longer(-year) %>%
+  group_by(name) %>% 
+  summarise(means=mean(value),sds=sd(value))
+
+##temp figure
 minmaxT_fig=ggplot(tempsdat, aes(x=year, y=value, color=name))+
   scale_color_manual(values = c("#d85555","#404080"),
                      labels=c("Maximum","Minimum"),
@@ -67,6 +82,7 @@ minmaxT_fig=ggplot(tempsdat, aes(x=year, y=value, color=name))+
         legend.background=element_blank())
 
 minmaxT_fig
+
 
 ##VPD figure
 
@@ -119,5 +135,7 @@ vpd_fig/precip_fig/minmaxT_fig+
   plot_annotation(tag_levels="a") & theme(plot.tag.position = c(.05, 1),
    plot.tag = element_text(face = 'bold', size=15, family ="Helvetica", 
         hjust = -1, vjust = 0),text=element_text(family ="Helvetica"))
+
+
 
 

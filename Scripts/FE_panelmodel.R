@@ -87,6 +87,7 @@ all_pan_dat=panel95%>%
 
 fe_mod = feols(perinc~ vpd+I(vpd^2)+dbh+density | plot + year,
                data = na.omit(all_pan_dat))
+
 summary(fe_mod)
 
 ##===================================================================================================
@@ -148,8 +149,10 @@ comb_raw=seconddat%>%
 
 diff_raw=comb_raw %>%
   ggplot(aes(x=diffvpd, y=diffinc, fill=quant, color=quant))+
+  #geom_hline(yintercept = 0, linetype="dashed", color="grey")+
   scale_color_manual(name= "Terciles", values=c("#477571", "#404080","#d85555" ))+
   scale_fill_manual(name="Terciles",values=c("#477571","#404080", "#d85555"))+
+  #geom_bar(stat="identity", lwd=.1, alpha=.5)+
   geom_smooth(method="lm")+
   labs(y=expression(Δprevalence~(t[2]-t[1])),
        x=expression(ΔVPD~(t[2]-t[1]))) +

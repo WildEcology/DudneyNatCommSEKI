@@ -326,6 +326,7 @@ era00_new=era00 %>%
 
 era00_new
 
+
 era00_new_cube=era00 %>%
   ggplot(aes(x=vpd))+
   geom_histogram(aes(y = stat((count / sum(count))*5)),
@@ -363,7 +364,7 @@ allfigs+plot_annotation(tag_levels="a") & theme(plot.tag.position = c(.05, 1),
                                                 plot.tag = element_text(face = 'bold', size=15, family ="Helvetica", 
                                                                         hjust = 2, vjust = -.1),text=element_text(family ="Helvetica"))
 
-
+##export 7.5 x 12.5?
 
 ##=================================================================================================================
 ##                                    GLMM MODELS USING TEMPERATURE   
@@ -434,7 +435,7 @@ theme_set(
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),text=element_text(family ="Helvetica"))
 )
 
-
+?geom_boxplot
 
 ## =================================
 ##FIRST SURVEY FIGURE

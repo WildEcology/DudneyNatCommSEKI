@@ -25,6 +25,7 @@ library(tidyverse)
 library(lme4)
 library(ggtext) 
 library(ggpubr)
+library(patchwork)
 
 ##=================================================================================================================
 ##                              SUGAR PINE STABLE ISOTOPE STUDY ANALYSIS
@@ -58,8 +59,10 @@ analysis_dat=isodat%>%
 aovc <- aov(delta_c ~ wpbr+Error(pair/year), data = analysis_dat)
 summary(aovc)
 
+
 ##check with glm which should produce the same results
-summary(glm(delta_c~wpbr+year+pair, data=analysis_dat))
+glmmod=glm(delta_c~wpbr+year+pair, data=analysis_dat)
+
 
 ##Stable nitrogen isotope model
 aovn=aov(n ~ wpbr+ Error(pair/year), data = analysis_dat)
@@ -74,6 +77,7 @@ summary(glm(perc~wpbr+year+pair, data=analysis_dat))
 ##Percent nitrogen model
 aovpern=aov(pern ~ wpbr+Error(pair/year), data = analysis_dat)
 summary(aovpern)
+glance(aovpern) 
 
 summary(glm(pern~wpbr+year+pair, data=analysis_dat))
 
@@ -92,12 +96,12 @@ summary(aovnum)
 ##==================================================================================================================
 
 ##Mortality
-mortanal=analysis_dat%>% 
+mortanaly=analysis_dat%>% 
   distinct(treeid, wpbr, dbh, pair, mortality)%>%
   mutate_at(scale, .vars = vars(dbh))%>%
   as.data.frame(.)
 
-summary(glmer(mortality~wpbr+(1|pair), data=mortanal, 
+summary(glmer(mortality~wpbr+(1|pair), data=mortanaly, 
               control=glmerControl(optimizer="bobyqa"),family = binomial))
 
 
@@ -106,6 +110,12 @@ summary(glmer(mortality~wpbr+(1|pair), data=mortanal,
 ##                This code produces all panels for Figure 5 
 ##                        of sugar pine drought study
 ##==================================================================================================================
+
+theme_set(
+  theme_bw(base_size = 15)+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),text=element_text(family ="Helvetica"))
+)
+
 
 isofign=ggplot(isodat, aes(x=Rust, y=n, fill=Rust, color=Rust))+
   geom_boxplot(width=0.5,position=position_dodge(1), alpha=.5)+
@@ -166,7 +176,8 @@ numfig=ggplot(isodat, aes(x=Rust, y=mean_num, fill=Rust, color=Rust))+
            alpha=1,color="black", size=2.5)
 
 numfig
-help("scale_color_manual")
+
+
 isofigyearsc=ggplot(isodat, aes(x=year, y=delta_c, color=Rust, fill=Rust))+
   geom_smooth(alpha=.3)+
   geom_jitter(width = .2, alpha=.2)+
@@ -254,10 +265,6 @@ sugarpinefig=ggplot(filter(needles, name=="sugar pine"), aes(x=factor(year), y=l
         plot.title = element_text(hjust = 0.5))
 
 sugarpinefig
-
-
-
-
 
 
 
